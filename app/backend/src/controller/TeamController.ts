@@ -13,4 +13,14 @@ export default class TeamController {
     const { status, data } = await this.teamService.getAllTeams();
     res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async getOneTeam(req: Request, res: Response) {
+    const { id } = req.params;
+    const { status, data } = await this.teamService.getOneTeam(Number(id));
+    if (status !== 'SUCCESSFUL') {
+      return res.status(mapStatusHTTP(status)).json(data);
+    }
+
+    res.status(mapStatusHTTP(status)).json(data);
+  }
 }

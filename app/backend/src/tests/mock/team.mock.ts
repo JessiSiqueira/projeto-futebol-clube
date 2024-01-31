@@ -6,6 +6,11 @@ const teams = [{
   },
 ];
 
+const team = [{
+  teamName: 'Bahia'
+}];
+
 export {
     teams,
+    team,
 }
