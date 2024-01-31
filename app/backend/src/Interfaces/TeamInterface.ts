@@ -1,12 +1,12 @@
 type IdType = {
-    id: number;
-}
+  id: number;
+};
 
 interface TeamInterface extends IdType {
-    teamName: string
+  teamName: string
 }
 
 export {
-    IdType,
-    TeamInterface
-}
+  IdType,
+  TeamInterface,
+};
