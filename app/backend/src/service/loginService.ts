@@ -11,12 +11,6 @@ export default class UserService {
   }
 
   public async login(email: string, password: string): Promise<ServiceResponse<string>> {
-    if (!email || !password) {
-      return {
-        status: 'INVALID_DATA',
-        data: { message: 'All fields must be filled' } };
-    }
-
     const user = await this.user.findByEmail(email);
 
     if (!user) return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
