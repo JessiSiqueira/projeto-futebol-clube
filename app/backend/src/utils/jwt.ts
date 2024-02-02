@@ -5,6 +5,7 @@ const jwtSecret = process.env.JWT_SECRET || 'jwtSecret';
 type Payload = {
   id: number;
   email: string;
+  role: string;
 };
 
 const userToken = (payload: Payload): string => {
