@@ -1,6 +1,5 @@
-import * as jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
-import { verifyToken } from '../utils/jwt';
+import verify from '../utils/jwt';
 
 export default class ValidateToken {
   public static validate(req: Request, res: Response, next: NextFunction) {
@@ -10,11 +9,11 @@ export default class ValidateToken {
     }
 
     const token = authorizationHeader.split(' ')[1];
-    console.log('olha aqui', token);
 
     try {
-      const verifyToken2 = verifyToken(token);
-      console.log('aquimerma', verifyToken2);
+      const payload = verify.verifyToken(token);
+      req.body.user = payload;
+
       next();
     } catch (error) {
       res.status(401).json({ message: 'Token must be a valid token' });

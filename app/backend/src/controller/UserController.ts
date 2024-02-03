@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 import UserService from '../service/loginService';
-import JWTUtils from '../utils/jwt';
 
 export default class UserController {
   private userService: UserService;
@@ -17,14 +16,8 @@ export default class UserController {
   }
 
   public async getUserRole(req: Request, res: Response): Promise<Response> {
-    const { authorization } = req.headers;
-    let verifyToken;
-
-    if (typeof authorization === 'string') {
-      verifyToken = JWTUtils.verifyToken(authorization) as { email: string };
-    }
-
-    const { status, data } = await this.userService.getRole(verifyToken?.email || '');
+    const payload = req.body.user;
+    const { status, data } = await this.userService.getRole(payload.email);
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }
