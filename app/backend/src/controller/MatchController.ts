@@ -17,8 +17,8 @@ export default class MatchController {
       return res.status(mapStatusHTTP(status)).json(matchesInProgress);
     }
     if (inProgress === 'false' && Array.isArray(data)) {
-      const matchesInProgress = data.filter((match) => match.inProgress === false);
-      return res.status(mapStatusHTTP(status)).json(matchesInProgress);
+      const matchesFinished = data.filter((match) => match.inProgress === false);
+      return res.status(mapStatusHTTP(status)).json(matchesFinished);
     }
     res.status(mapStatusHTTP(status)).json(data);
   }
