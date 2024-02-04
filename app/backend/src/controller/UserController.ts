@@ -18,6 +18,7 @@ export default class UserController {
   public async getUserRole(req: Request, res: Response): Promise<Response> {
     const payload = req.body.user;
     const { status, data } = await this.userService.getRole(payload.email);
+    console.log('olha aqui ->', status, data);
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }

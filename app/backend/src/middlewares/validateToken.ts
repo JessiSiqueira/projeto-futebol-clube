@@ -13,8 +13,6 @@ export default class ValidateToken {
     try {
       const payload = verify.verifyToken(token);
       req.body.user = payload;
-
-      next();
     } catch (error) {
       res.status(401).json({ message: 'Token must be a valid token' });
     }
