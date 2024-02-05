@@ -16,4 +16,13 @@ export default class TeamService {
       data: allMatches,
     };
   }
+
+  public async updateFinishedMatch(id: string):
+  Promise<ServiceResponse<{ message: string }>> {
+    await this.match.update(id, { inProgress: false });
+    return {
+      status: 'SUCCESSFUL',
+      data: { message: 'Finished' },
+    };
+  }
 }
