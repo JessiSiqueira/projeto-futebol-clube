@@ -25,4 +25,13 @@ export default class TeamService {
       data: { message: 'Finished' },
     };
   }
+
+  public async updateMatch(id: string, homeTeamGoals: number, awayTeamGoals: number):
+  Promise<ServiceResponse<{ message: string }>> {
+    await this.match.update(id, { homeTeamGoals, awayTeamGoals });
+    return {
+      status: 'SUCCESSFUL',
+      data: { message: 'GOAAAAL!' },
+    };
+  }
 }
