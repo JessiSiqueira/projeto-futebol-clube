@@ -34,4 +34,9 @@ export default class Match implements IMatchModel {
     const updatedMatch = await this.model.findByPk(id);
     return updatedMatch;
   }
+
+  async create(data: IMatch): Promise<IMatch> {
+    const match = await this.model.create(data);
+    return match;
+  }
 }

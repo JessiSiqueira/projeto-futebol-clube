@@ -34,4 +34,12 @@ export default class TeamService {
       data: { message: 'GOAAAAL!' },
     };
   }
+
+  public async createMatch(data: IMatch): Promise<ServiceResponse<IMatch>> {
+    const match = await this.match.create(data);
+    return {
+      status: 'CREATED',
+      data: match,
+    };
+  }
 }
