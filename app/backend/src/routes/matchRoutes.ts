@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 
 import MatchController from '../controller/MatchController';
 import ValidateToken from '../middlewares/validateToken';
+import ValidateMatch from '../middlewares/validateMatch';
 
 const matchController = new MatchController();
 
@@ -27,6 +28,7 @@ matchRouter.patch(
 matchRouter.post(
   '/',
   ValidateToken.validate,
+  ValidateMatch.validate,
   (req: Request, res: Response) => matchController.createMatch(req, res),
 );
 
