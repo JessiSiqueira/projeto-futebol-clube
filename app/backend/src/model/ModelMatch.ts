@@ -1,4 +1,5 @@
 import { IMatch } from '../Interfaces/IMatches';
+import { NewEntity } from '../Interfaces/Index';
 import { IMatchModel, updateMatch } from '../Interfaces/IMatchModel';
 import ModelMatch from '../database/models/Match.model';
 import ModelTeam from '../database/models/Team.model';
@@ -35,8 +36,9 @@ export default class Match implements IMatchModel {
     return updatedMatch;
   }
 
-  async create(data: IMatch): Promise<IMatch> {
+  async create(data: NewEntity<IMatch>): Promise<IMatch> {
     const match = await this.model.create(data);
-    return match;
+    const { id, homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress }: IMatch = match;
+    return { id, homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress };
   }
 }

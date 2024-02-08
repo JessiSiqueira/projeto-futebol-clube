@@ -1,6 +1,7 @@
 import Match from '../model/ModelMatch';
 import { IMatch } from '../Interfaces/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import { NewEntity } from 'src/Interfaces/Index';
 
 export default class TeamService {
   private match: Match;
@@ -35,8 +36,10 @@ export default class TeamService {
     };
   }
 
-  public async createMatch(data: IMatch): Promise<ServiceResponse<IMatch>> {
-    const match = await this.match.create(data);
+  public async createMatch(data: NewEntity<IMatch>): Promise<ServiceResponse<IMatch>> {
+    const newMatch = { ...data, inProgress: true };
+    const match = await this.match.create(newMatch);
+    console.log('olha aqui', match);
     return {
       status: 'CREATED',
       data: match,
