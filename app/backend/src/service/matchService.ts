@@ -1,7 +1,8 @@
+import { NewEntity } from '../Interfaces/Index';
 import Match from '../model/ModelMatch';
 import { IMatch } from '../Interfaces/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
-import { NewEntity } from 'src/Interfaces/Index';
+
 
 export default class TeamService {
   private match: Match;
