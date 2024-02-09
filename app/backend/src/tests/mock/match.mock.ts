@@ -227,6 +227,11 @@ const invalidMatch = {
   awayTeamGoals: 2
 };
 
+const validUpdateMatch = {
+	homeTeamGoals: 3,
+	awayTeamGoals: 1,
+};
+
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDcwNDY2MzgsImV4cCI6MTcwNzY1MTQzOH0.fHcuFGpH-m6Zp7FJcl1GmBG6nXYtmiT4b4fXSSG2cME';
 
 export {
@@ -237,4 +242,5 @@ export {
     newMatch,
     token,
     invalidMatch,
+    validUpdateMatch,
 };
