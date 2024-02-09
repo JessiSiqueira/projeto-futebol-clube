@@ -3,7 +3,6 @@ import Match from '../model/ModelMatch';
 import { IMatch } from '../Interfaces/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 
-
 export default class TeamService {
   private match: Match;
 
