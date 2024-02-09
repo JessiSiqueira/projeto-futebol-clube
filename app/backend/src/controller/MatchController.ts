@@ -40,4 +40,9 @@ export default class MatchController {
     console.log('data', data);
     res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async getLeaderBoard(req: Request, res: Response) {
+    const { status, data } = await this.matchService.getLeaderBoard();
+    res.status(mapStatusHTTP(status)).json(data);
+  }
 }

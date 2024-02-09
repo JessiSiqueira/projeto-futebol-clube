@@ -1,8 +1,8 @@
-import { IMatch } from './IMatches';
+import { IMatch, MatchTeamName } from './IMatches';
 
 export interface IMatchModel {
   // ...
-  findAll(): Promise<IMatch[]>,
+  findAll(): Promise<MatchTeamName[]>,
   create(data: Partial<IMatch>): Promise<IMatch>,
 
 }

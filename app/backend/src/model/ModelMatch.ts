@@ -1,4 +1,4 @@
-import { IMatch } from '../Interfaces/IMatches';
+import { IMatch, MatchTeamName } from '../Interfaces/IMatches';
 import { NewEntity } from '../Interfaces/Index';
 import { IMatchModel, updateMatch } from '../Interfaces/IMatchModel';
 import ModelMatch from '../database/models/Match.model';
@@ -6,7 +6,7 @@ import ModelTeam from '../database/models/Team.model';
 
 export default class Match implements IMatchModel {
   private model = ModelMatch;
-  async findAll(): Promise<IMatch[]> {
+  async findAll(): Promise<MatchTeamName[]> {
     const matches = await this.model.findAll({
       include: [
         {
@@ -20,7 +20,7 @@ export default class Match implements IMatchModel {
           attributes: ['teamName'],
         },
       ],
-    });
+    }) as unknown as MatchTeamName[];
     return matches;
   }
 

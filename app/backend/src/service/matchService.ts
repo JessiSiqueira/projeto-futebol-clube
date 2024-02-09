@@ -2,6 +2,8 @@ import { NewEntity } from '../Interfaces/Index';
 import Match from '../model/ModelMatch';
 import { IMatch } from '../Interfaces/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import { ILeaderBoard } from '../Interfaces/ILeaderBoard';
+import leaderBoard from '../utils/leaderBoard';
 
 export default class TeamService {
   private match: Match;
@@ -43,6 +45,15 @@ export default class TeamService {
     return {
       status: 'CREATED',
       data: match,
+    };
+  }
+
+  public async getLeaderBoard(): Promise<ServiceResponse<ILeaderBoard[]>> {
+    const allMatches = await this.match.findAll();
+    const data = leaderBoard(allMatches, 'homeTeam');
+    return {
+      status: 'SUCCESSFUL',
+      data,
     };
   }
 }
