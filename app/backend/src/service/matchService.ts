@@ -4,6 +4,7 @@ import { IMatch } from '../Interfaces/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { ILeaderBoard } from '../Interfaces/ILeaderBoard';
 import leaderBoard from '../utils/leaderBoard';
+import classificationOfTeam from '../utils/Classification';
 
 export default class TeamService {
   private match: Match;
@@ -51,9 +52,19 @@ export default class TeamService {
   public async getLeaderBoard(): Promise<ServiceResponse<ILeaderBoard[]>> {
     const allMatches = await this.match.findAll();
     const data = leaderBoard(allMatches, 'homeTeam');
+    const efficiencyOfTeam = data.map((board) => {
+      const obj = board;
+      return {
+        ...obj,
+        efficiency:
+          Number(((board.totalPoints / (board.totalGames * 3)) * 100).toFixed(2)),
+      };
+    });
+
+    const classification = classificationOfTeam(efficiencyOfTeam);
     return {
       status: 'SUCCESSFUL',
-      data,
+      data: classification,
     };
   }
 }
