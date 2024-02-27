@@ -1,14 +1,13 @@
 Sobre o projeto:
-
 - Trata-se de um site informativo sobre partidas e classificações de futebol! ⚽️
 
 Tecnologias utilizadas:
 
-MySQL 
-Sequelize
-TypeScript
-Docker 
-Express
+- MySQL 
+- Sequelize
+- TypeScript
+- Docker 
+- Express
 
 Instruções para inicializar o projeto
 
@@ -21,8 +20,8 @@ git clone https://github.com/JessiSiqueira/frontendmyheartbroken.git
 npm install
 
 4- Inicialize o projeto com Docker:
-npm start 
+- npm start 
 'node.'
 
-npm run dev
+- npm run dev
 'nodemon.'
